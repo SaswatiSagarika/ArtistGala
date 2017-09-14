@@ -1,0 +1,74 @@
+
+ 
+ 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+    <form>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd">
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+      </div>
+     <div class="btn-group">
+      <button type="submit" class="btn btn-primary">Register Me</button>
+      <button type="submit" class="btn btn-danger" (click)="modalRef2.hide()">Changed Mind</button>
+      </div>
+  </form>
+    <div>
+    <p>New User</p>
+    <a (click)="openModal2(templateNested)">Register Me </a>
+  </div>
+  </div>
+</div>
+
+<template #templateNested>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Register Me</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="uname">User Name</label>
+        <input type="text" class="form-control" id="uname">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+        <label for="dob">DOB</label>
+        <input type="date" class="form-control" id="dob">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd">
+      </div>
+       <div class="form-group">
+        <label for="pwd2">Conform Password:</label>
+        <input type="password" class="form-control" id="pwd2">
+      </div>
+      <div class="btn-group">
+      <button type="submit" class="btn btn-primary">Register Me</button>
+      <button type="submit" class="btn btn-danger" (click)="modalRef2.hide()">Changed Mind</button>
+      </div>
+  </form>
+   
+  </div>
+</template>
+ 
