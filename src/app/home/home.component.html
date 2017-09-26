@@ -1,19 +1,109 @@
-<div class="container">
-  <div class="col-sm-12">
+
     <carousel>
       <slide>
-        <img src="assets/images/Chrysanthemum.jpg" alt="First slide">
+        <img src="assets/images/11.jpg" alt="First slide" width="1200" height="300">
         
           
       </slide>
       <slide>
-        <img src="assets/images/Tulips.jpg" alt="Second slide">
+        <img src="assets/images/16.jpg" alt="Second slide" width="1200" height="300">
         
       </slide>
       <slide>
-        <img src="assets/images/Hydrangeas.jpg" alt="Third slide">
+        <img src="assets/images/9.jpg" alt="Third slide" width="1200" height="300">
         
       </slide>
     </carousel>
-  </div>  
+  <div id="band" class="container text-center">
+  <h3>Artist Gala</h3>
+  <p><em>We love Art!</em></p>
+  <p>We have created a fictional website.<br>
+    <b>Art!</b>
+   <br> As priceless as jewels
+ <br>
+As delicate as stars
+ <br>
+Colours' as beautiful as nature
+ <br>
+Art is like emotion
+ <br>
+Unique, vibrant, expressive
+  </p>
+  <br>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Pablo Picasso</strong></p><br>
+      <a (click)="isCollapsed = !isCollapsed">
+        <img src="assets/images/pablo picasso.jpg" class="img-circle person" alt="Pablo_Picasso" width="255" height="255">
+      </a>
+      <div (collapsed)="collapsed($event)"
+        (expanded)="expanded($event)"
+          [collapse]="isCollapsed">
+        <p>“Everything you can imagine is real.”</p>
+        <p>He is best known as the co-founder, along with Georges Braque</p>
+        <p>20th century artist</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Rainbow Rowell</strong></p><br>
+      <a [routerLink]="['/detail']">
+        <img src="assets/images/rainbowrowell.jpg" class="img-circle person" alt="Rainbow_Rowell" width="255" height="255">
+      </a>
+      <div (collapsed)="collapsed($event)"
+        (expanded)="expanded($event)"
+          [collapse]="isCollapsed">
+        <p>Art enables us to find ourselves and lose ourselves at the same time</p>
+        <p>Loves drummin'</p>
+        <p>Member since January 2010</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Chuck Klosterman</strong></p><br>
+      <a (click)="isCollapsed = !isCollapsed">
+        <img src="assets/images/Chuck.jpg" class="img-circle person" alt="Chuck_Klosterman" width="255" height="255">
+      </a>
+      <div (collapsed)="collapsed($event)"
+        (expanded)="expanded($event)"
+          [collapse]="isCollapsed">
+        <p>Painting is poetry that is seen rather than felt, and poetry is painting that is felt rather than seen.</p>
+        <p>Loves math</p>
+        <p>Member since September 1972</p>
+      </div>
+    </div>
+  </div>
+</div>
+  <br>
+   <br>
+   <div id="contact" class="container-fluid bg-grey">
+    <div class="row" >
+      <div class="col-md-4">
+        <br>
+        <p>Fan? Drop a note.</p>
+        <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+        <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+        <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          
+          <div class="col-sm-6 form-group">
+            <br>
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <br>
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
+        </div>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+        <br>
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <button class="btn btn-basic text-style" type="submit">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

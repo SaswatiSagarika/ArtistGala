@@ -8,3 +8,11 @@
   min-width: 100%;
   height: 500px;
 }
+ .bg-grey {
+      background-color: #476b6b;
+      color:#ffffff;
+  }
+    .text-style {
+      
+      color:#000;
+  }

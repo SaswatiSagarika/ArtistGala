@@ -2,7 +2,9 @@
 <div>
     <nav class='navbar navbar-default'>
         <div class='container-fluid'>
+          <div class="navbar-header">
             <a class='navbar-brand'>{{pageTitle}}</a>
+          </div>
             <ul class='nav navbar-nav'>
                 <li><a [routerLink]="['/welcome']">Home</a></li>
                 <li dropdown>
@@ -10,19 +12,51 @@
                     New Feeds
                   </a>
                   <ul *dropdownMenu class="dropdown-menu" role="menu">
-                    <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+                    Geners
+                    <li class="divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Abstact</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Oil Painting</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Photography</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Cartoons</a></li>
+                    
                     <li class="divider dropdown-divider"></li>
                     <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
                     </li>
                   </ul>
+                </li>
+                <li dropdown>
+                  <a dropdownToggle class="dropdown-toggle">
+                    Community
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu" role="menu">
+                    
+                    <li role="menuitem"><a class="dropdown-item" href="#">Groups</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Artists</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Recommendations</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Downloads</a>
+                    </li>
+                  </ul>
                 </li> 
-                <li><a >About Us</a></li>
-                <li><a >Contact</a></li>
-            </ul>
+              </ul>
               <ul class="nav navbar-nav navbar-right">
-              <li><a [routerLink]="['/login']">Login</a></li>
+                
+                <li *ngIf="!loggedIn"><login-modal></login-modal></li>
+                <li dropdown *ngIf="loggedIn">
+                <li dropdown *ngIf="loggedIn">
+                  <a dropdownToggle class="dropdown-toggle">
+                    Hello User!!! 
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu" role="menu">
+                    
+                    <li role="menuitem"><a class="dropdown-item"  (click)="logout()">Groups</a></li>
+                    <li role="menuitem"><a class="dropdown-item" (click)="doblock()">Block Account</a></li>
+                    <li role="menuitem"><a class="dropdown-item" [routerLink]="['/changepwd']">Change Password</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" (click)="doLogOut()">Logout</a>
+                    </li>
+                  </ul>
+                </li>
             </ul>
           </div>
       </nav>

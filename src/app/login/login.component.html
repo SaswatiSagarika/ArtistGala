@@ -1,74 +1,40 @@
 
- 
- 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    {{pageTitle}}
-  </div>
-  <div class="panel-body">
-    <form>
-      <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email">
+ <a type="button"  (click)="staticModal.show()">Login</a>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-primary">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {{pageTitle}}
       </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" [(ngModel)]="login.email" class="form-control" name="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" [(ngModel)]="login.password" class="form-control" name="pwd">
+          </div>
+          <div class="checkbox">
+              <label><input type="checkbox"> Remember me</label>
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" (click)="getmelogged()">Login</button>
+            <button type="submit" class="btn btn-danger" (click)="staticModal.hide()">Changed Mind</button>
+          </div>
+          <div>
+            <p> New user? click <registration-modal></registration-modal> to get register</p>
+          </div>
+        </form>
+        <!--h4 style="color:red" *ngIf="!loginStatus">Wrong Credentials! try 'user' as username and 'pass' as password.</h4-->
       </div>
-      <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
-      </div>
-     <div class="btn-group">
-      <button type="submit" class="btn btn-primary">Register Me</button>
-      <button type="submit" class="btn btn-danger" (click)="modalRef2.hide()">Changed Mind</button>
-      </div>
-  </form>
-    <div>
-    <p>New User</p>
-    <a (click)="openModal2(templateNested)">Register Me </a>
-  </div>
+    </div>
   </div>
 </div>
 
-<template #templateNested>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Register Me</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="uname">User Name</label>
-        <input type="text" class="form-control" id="uname">
-      </div>
-      <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email">
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name">
-      </div>
-      <div class="form-group">
-        <label for="dob">DOB</label>
-        <input type="date" class="form-control" id="dob">
-      </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
-      </div>
-       <div class="form-group">
-        <label for="pwd2">Conform Password:</label>
-        <input type="password" class="form-control" id="pwd2">
-      </div>
-      <div class="btn-group">
-      <button type="submit" class="btn btn-primary">Register Me</button>
-      <button type="submit" class="btn btn-danger" (click)="modalRef2.hide()">Changed Mind</button>
-      </div>
-  </form>
-   
-  </div>
-</template>
- 

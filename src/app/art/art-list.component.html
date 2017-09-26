@@ -1,0 +1,141 @@
+<div class='table-responsive'>
+  <button type="button" class="btn btn-md btn-info"  (click)="newArtopen()" tooltip ="Add New Documents"  placement='bottom'> <span class="glyphicon glyphicon-upload"></span>  </button>
+     
+    <table  id="listTable" class="table table-bordered table-hover table-striped">
+      <tr *ngFor="let a of art">
+                <td >{{ a.Art_name }}</td>
+                <td>{{ a.Genre }}</td>
+                <td>{{ a.Art_details }}</td>
+                <td ><button type="button" class="btn btn-md btn-success" tooltip ="Edit the Document"  placement='bottom'(click)=doEdit(a) ><span class="glyphicon glyphicon-pencil"></span>  </button>
+                <button type="button" class="btn btn-md btn-success" tooltip ="Download the Document"  placement='bottom'(click)=dodownload(a) > <span class="glyphicon glyphicon-download"></span> </button></td>
+		        <td><button type="button" class="btn btn-md btn-inverse" (click)=doShow(a)  tooltip ="Show the Details of the Document"  placement='bottom'> <span class="glyphicon glyphicon-fullscreen"></span>  </button>
+		        <button type="button" class="btn btn-md btn-danger"  (click)="openModal(template)" tooltip ="Delete the Document"  placement='bottom'> <span class="glyphicon glyphicon-scissors"></span>  </button></td>
+       </tr>
+    </table>
+    </div>
+
+ <template #deleteModal >
+   <div class="modal-dialog modal-sm">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Please Confirm</h4>
+    <!--<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+   Are You Sure, You Want to Delete this Blog?
+  </div>
+  <div class="modal-footer ">
+      <div class="row">
+        <div class="col-sm-12 text-right" >
+          <button type="button" class="btn btn-default" (click)="doDelete()">Yes</button>
+          <button type="button" class="btn btn-default" (click)="doHide()">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!--</div>-->
+  
+</template>
+<template #editModal >
+   <div class="modal-dialog modal-sm">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Art</h4>
+    <!--<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+   <form>
+          <div class="form-group">
+            <label for="name">Art name</label>
+             <input type="text" name="Art_name" class="form-control" [(ngModel)]="a.Art_name" /><br/>
+          </div>
+          <div class="form-group">
+            <label for="Genre">Genre:</label>
+            <input type="Genre" [(ngModel)]="a.Genre" class="form-control" name="Genre">
+          </div>
+          <div class="form-group">
+            <label for="details">Description:</label>
+            <input type="details" [(ngModel)]="a.Art_details" class="form-control" name="details">
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" (click)="getmelogged()">Submit</button>
+            <button type="submit" class="btn btn-danger" (click)="staticpanel.hide()">Changed Mind</button>
+          </div>
+          
+        </form>
+  </div>
+ 
+  </div>
+ <!--</div>-->
+  
+</template>
+<template #ShowModal >
+   <div class="modal-dialog modal-sm">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">VeiwArt</h4>
+    <!--<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+   <form>
+          <div class="form-group">
+            <label for="name">Art name</label>
+             <input type="text" name="Art_name" class="form-control" value={{a.Art_name}} /><br/>
+          </div>
+          <div class="form-group">
+            <label for="Genre">Genre:</label>
+            <input type="Genre" value={{a.Genre}} class="form-control" name="Genre">
+          </div>
+          <div class="form-group">
+            <label for="details">Description:</label>
+            <textarea type="details" class="form-control" name="details">{{a.Art_details}}</textarea>
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" (click)="getmelogged()">Okay</button>
+           </div>
+          
+        </form>
+  </div>
+ 
+  </div>
+ <!--</div>-->
+  
+</template>
+<template #AddnewModal >
+   <div class="modal-dialog modal-sm">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">AddNew</h4>
+    <!--<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+   <form>
+     <input type="hidden" class="form-control" name="details" [(ngModel)]="art.Art_details" >
+          <div class="form-group">
+            <label for="name">Art name</label>
+             <input type="text" name="Art_name" class="form-control" [(ngModel)]="art.Art_name" /><br/>
+          </div>
+          <div class="form-group">
+            <label for="Genre">Genre:</label>
+            <input type="Genre" [(ngModel)]="art.Genre" class="form-control" name="Genre">
+          </div>
+          <div class="form-group">
+            <label for="details">Description:</label>
+            <input type="details" class="form-control" name="details" [(ngModel)]="art.Art_details" >
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" (click)="addNewArt()">Okay</button>
+            <button type="submit" class="btn btn-primary" (click)="doHide()">Cancel</button>
+           </div>
+          
+        </form>
+  </div>
+ 
+  </div>
+ <!--</div>-->
+  
+</template>

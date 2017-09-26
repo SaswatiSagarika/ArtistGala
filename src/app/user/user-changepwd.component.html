@@ -1,0 +1,35 @@
+
+ 
+
+<div class="panel" >
+  
+    <div class="panel-content">
+      <div class="panel-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="childpanel.hide()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {{pageTitle}}
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label for="uname">Old password</label>
+            <input type="password" class="form-control" [(ngModel)]="user.Opassword" id="pwdo" name="pwdo">
+          </div>
+          <div class="form-group">
+            <label for="pwd">New Password:</label>
+            <input type="password" class="form-control" [(ngModel)]="user.password" id="pwd" name="pwd">
+          </div>
+          <div class="form-group">
+            <label for="pwd2">Conform Password:</label>
+            <input type="password" class="form-control" [(ngModel)]="user.Npassword" id="pwd2" name="pwd2">
+          </div>
+          <div class="btn-group">
+          <button type="submit" class="btn btn-primary" (click)="Changepwd()">Register Me</button>
+        
+          </div>
+      </form>
+    </div>
+    </div>
+ 
+</div>

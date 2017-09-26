@@ -1,0 +1,51 @@
+<div id="contact" class="container-fluid bg-grey">
+    <div class="row" >
+        <div class="col-md-4">
+            <br>
+           
+        <img src="assets/images/pablo picasso.jpg" class="img" alt="Rainbow_Rowell" width="255" height="255">
+      
+        </div>
+        <div class="col-md-8">
+            
+            <h2>{{user.Name}}</h2>
+            <div class="row">
+                <div class='table-responsive'>
+                    <table class='table detail-tab'>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <b>Born</b>
+                                </td>
+                                <td>{{user.address}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Twitter</b></td>
+                                <td>{{user.twitter}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>genre</b></td>
+                                <td>{{user.genre}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Member Since</b></td>
+                                <td>{{user.joining_date}}</td>
+                            </tr>
+                            
+                        </tbody>    
+                    </table>
+                    <p ><edit-modal></edit-modal></p>
+                </div>
+            </div>     
+        </div>
+    </div>
+    <br>
+    <div class="row">
+         {{user.Description}}
+    </div>
+    <br>
+    <div class="row" >
+        <h3><b></b></h3>
+        <artlist-root></artlist-root>
+    </div>
+</div>

@@ -1,21 +1,40 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, OnInit} from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
- 
+import {Observable} from "rxjs/Observable";
+import {Http} from "@angular/http";
+import {LoginService} from "./login.service";
+import {Login} from "./login";
+import { Router } from '@angular/router';
+
 @Component({
-  selector: 'demo-modal-service-static',
+  selector: 'login-modal',
   templateUrl: 'login.component.html'
 })
+
 export class LoginComponent {
   pageTitle: string = `Log In`;
-  public modalRef: BsModalRef;
-  public modalRef2: BsModalRef;
-   constructor(private modalService: BsModalService) {}
- 
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
-  public openModal2(template: TemplateRef<any>) {
-    this.modalRef2 = this.modalService.show(template, {class: 'second'});
-  }
-}
+  
+  public login : any;
+   public modalRef: BsModalRef;
+  constructor(private http:Http, private _loginService:LoginService, private _router: Router) {
+      this.login = new Login();
+    }
+
+     getmelogged(){
+      this._loginService.getmelogin(this.login).
+       subscribe((x) =>{
+        
+         localStorage.setItem('token',x.id);
+         localStorage.setItem('userId',x.userId);
+        this._router.navigate(['/detail']);
+        
+        })
+     }
+    
+  doHide()
+ {
+   this.modalRef.hide();
+ } 
+
+ }

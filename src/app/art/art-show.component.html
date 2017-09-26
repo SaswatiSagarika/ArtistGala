@@ -1,0 +1,46 @@
+
+
+<div class="panel">
+  
+    <div class="panel-content">
+      <div class="panel-header">
+         {{pageTitle}}
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Art name</label>
+             <input type="text" name="Art_name" class="form-control" [(ngModel)]="a.Art_name" /><br/>
+          </div>
+          <div class="form-group">
+            <label for="Genre">Genre:</label>
+            <input type="Genre" [(ngModel)]="a.Genre" class="form-control" name="Genre">
+          </div>
+          <div class="form-group">
+            <label for="details">Description:</label>
+            <textarea type="details" [(ngModel)]="a.Art_details" class="form-control" name="details"></textarea>
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" (click)="getmelogged()">Submit</button>
+            <button type="submit" class="btn btn-danger" (click)="staticpanel.hide()">Changed Mind</button>
+          </div>
+          
+        </form>
+        <!--h4 style="color:red" *ngIf="!loginStatus">Wrong Credentials! try 'user' as username and 'pass' as password.</h4-->
+      </div>
+    </div>
+  
+</div>
+<template #sriya >
+ <div class="modal-dialog modal-sm">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sucess</h4>
+
+  </div>
+  <div class="modal-body">
+   You have sucessfully edited the blog.
+  </div>
+  </div>
+ <!--</div>-->
+  
+</template>
