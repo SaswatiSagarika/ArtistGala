@@ -1,40 +1,16 @@
-
- <a type="button"  (click)="staticModal.show()">Login</a>
-
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
-tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-primary">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        {{pageTitle}}
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" [(ngModel)]="login.email" class="form-control" name="email">
-          </div>
-          <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" [(ngModel)]="login.password" class="form-control" name="pwd">
-          </div>
-          <div class="checkbox">
-              <label><input type="checkbox"> Remember me</label>
-          </div>
-          <div class="btn-group">
-            <button type="submit" class="btn btn-primary" (click)="getmelogged()">Login</button>
-            <button type="submit" class="btn btn-danger" (click)="staticModal.hide()">Changed Mind</button>
-          </div>
-          <div>
-            <p> New user? click <registration-modal></registration-modal> to get register</p>
-          </div>
-        </form>
-        <!--h4 style="color:red" *ngIf="!loginStatus">Wrong Credentials! try 'user' as username and 'pass' as password.</h4-->
-      </div>
-    </div>
+ <form>
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" [(ngModel)]="login.email" class="form-control" name="email">
   </div>
-</div>
-
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" [(ngModel)]="login.password" class="form-control" name="pwd">
+  </div>
+  
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary" (click)="getmelogged()">Login</button>
+    <button type="submit" class="btn btn-danger" (click)="staticModal.hide()">Changed Mind</button>
+  </div>
+  
+</form>

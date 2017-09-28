@@ -2,7 +2,7 @@ export class User{
     email:string;
     password:string;
     genre:string;
-    Name :string;
+    name :string;
     address:string;
     twitter:string;
     joining_date:string;

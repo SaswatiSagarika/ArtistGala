@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef} from '@angular/core';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 import { UserService} from './user.service';
+import { LoginService} from './../login/login.service';
 import {User} from './user';
-
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
  
 @Component({
@@ -14,8 +16,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class UserDetailComponent implements OnInit{
  public userId:string;
  public user:User;
-  constructor(private _userService:UserService, private _router: Router) {
-    
+ public loggedIn;
+ public modalRef: BsModalRef;
+  constructor(private _userService:UserService,private log:LoginService, private _router: Router, private modalService: BsModalService) {
+    this.loggedIn = this.log.isLoggedIn();
       this.userId=localStorage.getItem("userId");
     }
   ngOnInit(): void { 
@@ -26,4 +30,10 @@ export class UserDetailComponent implements OnInit{
      this._userService.blockme(this.userId).
        subscribe((x) =>{alert("your  account is blocked");})
   }
+      public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    } 
+  handleLoginSuccess(): void {
+  this.loggedIn = true;
+}
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { LoginService } from './login/login.service';
 import { Router } from '@angular/router';
-
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
 export class AppComponent {
   pageTitle = 'app';
 
-  loggedIn= false;
-
-  constructor(private log: LoginService, private router: Router) {
+  public loggedIn= false;
+public modalRef: BsModalRef;
+ public modalRef2: BsModalRef;
+  constructor(private log: LoginService, private router: Router, private modalService: BsModalService) {
     this.loggedIn = this.log.isLoggedIn();
     
   }
@@ -28,6 +30,14 @@ export class AppComponent {
     return token;
     
 } 
-  
 
+handleLoginSuccess(): void {
+  this.loggedIn = true;
+}
+ public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    } 
+public openModal2(template: TemplateRef<any>) {
+    this.modalRef2 = this.modalService.show(template, {class: 'modal-sm'});
+    }
 }

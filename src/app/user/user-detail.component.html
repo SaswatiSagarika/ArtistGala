@@ -6,9 +6,9 @@
         <img src="assets/images/pablo picasso.jpg" class="img" alt="Rainbow_Rowell" width="255" height="255">
       
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             
-            <h2>{{user.Name}}</h2>
+            <h2>{{user.name}}</h2>
             <div class="row">
                 <div class='table-responsive'>
                     <table class='table detail-tab'>
@@ -20,6 +20,10 @@
                                 <td>{{user.address}}</td>
                             </tr>
                             <tr>
+                                <td><b>Email</b></td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                            <tr>
                                 <td><b>Twitter</b></td>
                                 <td>{{user.twitter}}</td>
                             </tr>
@@ -27,25 +31,40 @@
                                 <td><b>genre</b></td>
                                 <td>{{user.genre}}</td>
                             </tr>
-                            <tr>
-                                <td><b>Member Since</b></td>
-                                <td>{{user.joining_date}}</td>
-                            </tr>
+                            
                             
                         </tbody>    
                     </table>
-                    <p ><edit-modal></edit-modal></p>
+                   
                 </div>
             </div>     
         </div>
+        <div class="col-md-1">
+            
+             <p *ngIf="loggedIn"><a type="button" (click)="openModal(login)">edit this</a></p>
+        
+        </div>    
     </div>
     <br>
     <div class="row">
          {{user.Description}}
     </div>
     <br>
-    <div class="row" >
+    <div class="row"  >
         <h3><b></b></h3>
         <artlist-root></artlist-root>
     </div>
 </div>
+<template #login>
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Details</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    
+  </div>
+  <div class="modal-body">
+    <edit-modal></edit-modal>
+  </div>
+</template>
