@@ -29,10 +29,7 @@ export class UserEditComponent {
         //alert(this.user.id);
         this._userService.editUser(this.user).
    subscribe((x)=>{
-     
-     
      alert("You have sucessfully edited the blog");
-     //this.openModal(this.sriya);
      this._router.navigate(["\detail"]); 
       
     });

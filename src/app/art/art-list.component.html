@@ -1,12 +1,13 @@
-<div class='table-responsive'>
+
+  
   <button type="button" class="btn btn-md btn-info"  (click)="newArtopen()" tooltip ="Add New Documents"  placement='bottom'> <span class="glyphicon glyphicon-upload"></span>  </button>
-     
+<div class='table-responsive'>
     <table  id="listTable" class="table table-bordered table-hover table-striped">
       <tr *ngFor="let a of art">
                 <td >{{ a.Art_name }}</td>
                 <td>{{ a.Genre }}</td>
                 <td>{{ a.Art_details }}</td>
-                <td ><button type="button" class="btn btn-md btn-success" tooltip ="Edit the Document"  placement='bottom'(click)=doEdit(a) ><span class="glyphicon glyphicon-pencil"></span>  </button>
+                <td ><button type="button" class="btn btn-md btn-success" tooltip ="Edit the Document"  placement='bottom'(click)=doOpenEdit(a) ><span class="glyphicon glyphicon-pencil"></span>  </button>
                 <button type="button" class="btn btn-md btn-success" tooltip ="Download the Document"  placement='bottom'(click)=dodownload(a) > <span class="glyphicon glyphicon-download"></span> </button></td>
 		        <td><button type="button" class="btn btn-md btn-inverse" (click)=doShow(a)  tooltip ="Show the Details of the Document"  placement='bottom'> <span class="glyphicon glyphicon-fullscreen"></span>  </button>
 		        <button type="button" class="btn btn-md btn-danger"  (click)="openModal(template)" tooltip ="Delete the Document"  placement='bottom'> <span class="glyphicon glyphicon-scissors"></span>  </button></td>
@@ -37,7 +38,7 @@
  <!--</div>-->
   
 </template>
-<template #editModal >
+<template #edisdatModal >
    <div class="modal-dialog modal-sm">
   <div class="modal-header">
     <h4 class="modal-title pull-left">Edit Art</h4>
@@ -46,7 +47,7 @@
     </button>-->
   </div>
   <div class="modal-body">
-  
+  <artedit-root></artedit-root>
   </div>
  
   </div>
@@ -62,62 +63,24 @@
     </button>-->
   </div>
   <div class="modal-body">
-   <form>
-          <div class="form-group">
-            <label for="name">Art name</label>
-             <input type="text" name="Art_name" class="form-control" value={{a.Art_name}} /><br/>
-          </div>
-          <div class="form-group">
-            <label for="Genre">Genre:</label>
-            <input type="Genre" value={{a.Genre}} class="form-control" name="Genre">
-          </div>
-          <div class="form-group">
-            <label for="details">Description:</label>
-            <textarea type="details" class="form-control" name="details">{{a.Art_details}}</textarea>
-          </div>
-          <div class="btn-group">
-            <button type="submit" class="btn btn-primary" (click)="getmelogged()">Okay</button>
-           </div>
-          
-        </form>
+   <artshow-root></artshow-root>
   </div>
  
   </div>
  <!--</div>-->
   
 </template>
-<template #AddnewModal >
-   <div class="modal-dialog modal-sm">
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">AddNew</h4>
-    <!--<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+<template #AddnewModal>
+  <div class="modal-header ">
+    <h4 class="modal-title pull-left">Add Here</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="doHide()">
       <span aria-hidden="true">&times;</span>
-    </button>-->
+    </button>
+       
   </div>
   <div class="modal-body">
-   <form>
-     <input type="hidden" class="form-control" name="details" [(ngModel)]="art.Art_details" >
-          <div class="form-group">
-            <label for="name">Art name</label>
-             <input type="text" name="Art_name" class="form-control" [(ngModel)]="art.Art_name" /><br/>
-          </div>
-          <div class="form-group">
-            <label for="Genre">Genre:</label>
-            <input type="Genre" [(ngModel)]="art.Genre" class="form-control" name="Genre">
-          </div>
-          <div class="form-group">
-            <label for="details">Description:</label>
-            <input type="details" class="form-control" name="details" [(ngModel)]="art.Art_details" >
-          </div>
-          <div class="btn-group">
-            <button type="submit" class="btn btn-primary" (click)="addNewArt()">Okay</button>
-            <button type="submit" class="btn btn-primary" (click)="doHide()">Cancel</button>
-           </div>
-          
-        </form>
+        <artaddnew-root></artaddnew-root>
   </div>
- 
-  </div>
- <!--</div>-->
-  
+    
 </template>
+    

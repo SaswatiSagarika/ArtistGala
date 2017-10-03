@@ -1,0 +1,21 @@
+    <form>
+     <input type="hidden" class="form-control" name="details" [(ngModel)]="art.Art_details" >
+          <div class="form-group">
+            <label for="name">Art name</label>
+             <input type="text" name="Art_name" class="form-control" [(ngModel)]="art.Art_name" /><br/>
+          </div>
+          <div class="form-group">
+            <label for="Genre">Genre:</label>
+            <input type="Genre" [(ngModel)]="art.Genre" class="form-control" name="Genre">
+          </div>
+          <div class="form-group">
+            <label for="details">Description:</label>
+            <input type="details" class="form-control" name="details" [(ngModel)]="art.Art_details" >
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" (click)="addNewArt()">Okay</button>
+            <button type="submit" class="btn btn-primary" >Cancel</button>
+           </div>
+          
+        </form>
+          

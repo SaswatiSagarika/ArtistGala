@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -24,8 +24,9 @@ import { Art } from './art/art';
 import { ArtListComponent } from './art/art-list.component';
 import { ArtEditComponent } from './art/art-edit.component';
 import { ArtShowComponent } from './art/art-show.component';
+import { ArtaddComponent } from './art/art-addnew.component';
 import { PasschangeComponent } from './user/user-changepwd.component';
-
+import { FieldErrorDisplayComponent } from './errordisplay/field-error-display.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,11 +38,14 @@ import { PasschangeComponent } from './user/user-changepwd.component';
     ArtListComponent,
     ArtEditComponent,
     ArtShowComponent,
-    PasschangeComponent
+    PasschangeComponent,
+    ArtaddComponent,
+    FieldErrorDisplayComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'welcome', component: HomeComponent },
       { path: 'login', component: LoginComponent},

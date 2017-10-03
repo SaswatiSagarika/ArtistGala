@@ -12,7 +12,7 @@ export class AppComponent {
   pageTitle = 'app';
 
   public loggedIn= false;
-public modalRef: BsModalRef;
+ public modalRef: BsModalRef;
  public modalRef2: BsModalRef;
   constructor(private log: LoginService, private router: Router, private modalService: BsModalService) {
     this.loggedIn = this.log.isLoggedIn();
@@ -33,6 +33,7 @@ public modalRef: BsModalRef;
 
 handleLoginSuccess(): void {
   this.loggedIn = true;
+  this.modalRef.hide();
 }
  public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
@@ -40,4 +41,8 @@ handleLoginSuccess(): void {
 public openModal2(template: TemplateRef<any>) {
     this.modalRef2 = this.modalService.show(template, {class: 'modal-sm'});
     }
+   doHide(template: TemplateRef<any>)
+ {
+   this.modalRef.hide();
+ } 
 }

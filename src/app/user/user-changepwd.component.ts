@@ -11,13 +11,13 @@ import {User} from "./user";
 })
 export class PasschangeComponent {
   pageTitle: string = `Change Password`;
-  public user : any;
+ public user : any;
   constructor(private http:Http, private _UserService:UserService) {
       this.user = new User();
     }
 
      Changepwd(){
-      this._UserService.ChangePassword(User).
+      this._UserService.ChangePassword(this.user).
        subscribe((x) =>{alert("your password is changed");})
      }
   

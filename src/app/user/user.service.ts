@@ -38,8 +38,12 @@ export class UserService {
        return this._http.delete("http://localhost:3000/api/Artists/"+id,{headers: h}).map((response : Response) =>  <string> response.json().Name);
     }
     ChangePassword(user){
+         if(user.newPassword == user.cPassword){
             let h = new Headers(); 
       h.append("x-access-token",localStorage.getItem('token'));
-       return this._http.post("http://localhost:3000/api/Artists/reset-password"+user.password,{headers: h}).map((response : Response) =>  <string> response.json().Name);
+       return this._http.post("http://localhost:3000/api/Artists/change-password",user,{headers: h});
+        }else{
+            alert("password and conform password should be same") ;
+        }
     }
  }   

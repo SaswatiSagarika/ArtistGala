@@ -27,7 +27,7 @@ export class ArtService {
     editUser(id){
         let h = new Headers(); 
         h.append("x-access-token",localStorage.getItem('token'));
-        let data =this._http.get("http://localhost:3000/api/Artists/"+id+"/Arts",{headers: h})
+        return this._http.get("http://localhost:3000/api/Artists/"+id+"/Arts",{headers: h})
         .map((response: Response) => <any> response.json() as Art);
     }
     getArt(pid, fid) : Observable<Art>{
@@ -49,7 +49,7 @@ export class ArtService {
     {
       
       let h = new Headers(); 
-      h.append("x-access-token",localStorage.getItem('x-acess-token'));
+      h.append("x-access-token",localStorage.getItem('token'));
        return this._http.delete("http://localhost:3000/api/Artists/"+id+"/Arts"+art.id,{headers: h}).map((response : Response) =>  <string> response.json().count)
        .catch(this.errorHandle); 
     }
@@ -57,9 +57,9 @@ export class ArtService {
     {
       
       let h = new Headers(); 
-      h.append("x-access-token",localStorage.getItem('x-acess-token'));
-      //this._http.post("http://localhost:3000/api/Blogs/",JSON.stringify(blog),{headers: h});
-       return this._http.post("http://localhost:3000/api/Artists/"+id+"/Arts",{"Art_name":art.Art_name,"Genre":art.Genre, "Art_details":art.Art_details},{headers: h}).map((response: Response) => <any> response.json()); 
+      h.append("x-access-token",localStorage.getItem('token'));
+      console.log(JSON.stringify(h));
+       return this._http.post("http://localhost:3000/api/Artists/"+id+"/Arts",art,{headers: h}).map((response: Response) => <any> response.json()); 
           
     }
     private errorHandle(error:Response)

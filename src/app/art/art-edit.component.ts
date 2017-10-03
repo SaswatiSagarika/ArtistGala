@@ -2,8 +2,8 @@ import { Component,OnInit,TemplateRef,ViewChild, ElementRef } from '@angular/cor
 import { ArtService } from './art.service';
 import { Art } from './art';
 
-import { Router, ActivatedRoute} from '@angular/router';
-
+import { Router, ActivatedRoute, ParamMap} from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
@@ -20,9 +20,12 @@ export class ArtEditComponent {
       this.userId=localStorage.getItem("userId");
     }
   ngOnInit(): void { 
-        let id = +this._activrout.snapshot.params['id'];
-        this._artService.getArt(this.userId, id).subscribe((art: Art) => this.art = art);
-    
+        // let id = +this._activrout.snapshot.params['id'];
+        // this._artService.getArt(this.userId, id).subscribe((art: Art) => this.art = art);
+   this._activrout.paramMap
+    .switchMap((params: ParamMap) =>
+      this._artService.getArt(this.userId, params.get('id')))
+    .subscribe((art: Art) => this.art = art);
     }
     doEdit(art)
     {

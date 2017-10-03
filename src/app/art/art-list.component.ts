@@ -16,7 +16,8 @@ export class ArtListComponent implements OnInit {
   public _art:Art[];
   public userId;
   public modalRef: BsModalRef;
-  art:Art;
+  public modalRef2: BsModalRef;
+  public art:Art; 
    @ViewChild('AddnewModal') AddnewModal;
   public config = {
     
@@ -26,12 +27,12 @@ export class ArtListComponent implements OnInit {
   constructor( private _artService : ArtService, private _router : Router, private modalService: BsModalService)
   {
      this.userId=localStorage.getItem("userId");  
-    this.artObj = new Art();
+   
   } 
  ngOnInit()
  {
    let data=this._artService.getlistDetail(this.userId).subscribe((art:Art) => this.art = art);
-   alert(JSON.stringify(data));
+   //alert(JSON.stringify(data));
    return data;
  }
 
@@ -41,17 +42,18 @@ export class ArtListComponent implements OnInit {
   newArtopen(){
       this.openModal(this.AddnewModal);
   }
-  addNewArt(){
-    this._artService.addArt(this.userId, this.artObj).
-       subscribe((x) =>{alert("New Art is added");})
-       this.doHide();
-  }
+  
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template,this.config);
-    console.log(this.modalRef);
+    
+  }
+  public openModal2(template: TemplateRef<any>) {
+    this.modalRef2 = this.modalService.show(template,this.config);
+    
   }
   doHide()
  {
    this.modalRef.hide();
  }
+  
 }

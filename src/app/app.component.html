@@ -41,7 +41,7 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 
-                <li *ngIf="!loggedIn"><a type="button"  (click)="openModal(login)" (loggedInSuccess)="handleLoginSuccess()">Login</a></li>
+                <li *ngIf="!loggedIn"><a type="button"  (click)="openModal(login)" >Login</a></li>
                 <li dropdown *ngIf="loggedIn">
                 <li dropdown *ngIf="loggedIn">
                   <a dropdownToggle class="dropdown-toggle">
@@ -67,18 +67,18 @@
      </div>
 
 
- <a type="button"  (click)="openModal(template)" (loggedInSuccess)="handleLoginSuccess()">Login</a>
+ <!-- <a type="button"  (click)="openModal(template)" (loggedInSuccess)="handleLoginSuccess()">Login</a> -->
 <template #login>
 
   <div class="modal-header">
     <h4 class="modal-title pull-left">Login</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="doHide()">
     <span aria-hidden="true">&times;</span>
     </button>
     
   </div>
   <div class="modal-body">
-    <login-modal></login-modal>
+    <login-modal (loggedInSuccess)="handleLoginSuccess();doHide(login);"></login-modal>
     <div>
     <p> New user? click <a type="button"  (click)="openModal2(register)">Here</a> to get register</p>
   </div>
@@ -92,7 +92,7 @@
 <template #register>
   <div class="modal-header ">
     <h4 class="modal-title pull-left">Register Here</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="doHide()">
       <span aria-hidden="true">&times;</span>
     </button>
        

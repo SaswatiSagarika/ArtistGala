@@ -1,16 +1,18 @@
- <form>
+ <form [formGroup]="form">
   <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" [(ngModel)]="login.email" class="form-control" name="email">
+    <label for="email" required>Email address:</label>
+    <input type="email" required [(ngModel)]="login.email" class="form-control" formControlName="email">
+    
   </div>
   <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" [(ngModel)]="login.password" class="form-control" name="pwd">
+    <label for="password" required>Password:</label>
+    <input type="password" required [(ngModel)]="login.password" class="form-control" formControlName="password">
+   
   </div>
   
   <div class="btn-group">
-    <button type="submit" class="btn btn-primary" (click)="getmelogged()">Login</button>
-    <button type="submit" class="btn btn-danger" (click)="staticModal.hide()">Changed Mind</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="getmelogged()">Login</button>
+    <button class="btn" (click)="reset()">Reset</button>
   </div>
   
 </form>
